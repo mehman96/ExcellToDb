@@ -25,9 +25,9 @@ def main():
 @app.route("/", methods=["GET","POST"])
 def excell_load():
     if request.method=="POST":
-        document = request.files['document']
-        excel =(document.excel)
-        document.save(os.path.join(app.config['UPLOAD_FOLDER'], excel))
-
+        file = request.files['file']
+        filename =(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return render_template('index.html')
 if __name__ == "__main__":
     app.run(debug=True)
